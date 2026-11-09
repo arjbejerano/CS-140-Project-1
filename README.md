@@ -15,29 +15,6 @@ Members:
 | 202X-XXXXX     | Tibay, John Michael | THY/FVW3 |
 
 
-How dhouls we document?
-> By commit/Step?
-    > By file?
-
-> By todo list?
-    - this for now
-
-> as a whole?
-
-TODO list
-- [/] Add `SCHEDULING_POLICY` as make parameter
-- [/] Add Constants in `stcf.h`
-Phase 1
-- [/] Add 2.2 attributes to struct
-- [ ] `schedlog` implementation
-- [ ] `setburst` implementation
-- [ ] Decrement burst time of running process whenever a timer interrupt happens
-- [ ] Set burst time correctly when a process is first created
-- [ ] Modify scheduler to make it choose the process with the least total(which is also remaing) burst
-- [ ] Somehow exempt the kernel/scheduler from the above rule
-- [ ] test files
-    - [ ] `sanity_check.{sh,py}` build incrementally?
-
 # Phase 1
 
 `main` contains the base kernel and user programs. `phase1` adds:
