@@ -160,21 +160,21 @@ swtch(&c->context, &selected->context);
 
 This completely changes the selection policy away from the default scheduler behavior.
 ### 6) Decrementing burst time on timer interrupt
-+
+
 In `kernel/trap.c`, phase1 modifies the trap logic to reduce the current process's remaining burst whenever a timer interrupt occurs:
-+
+
 ```c
 if(which_dev == 2)
   if(--myproc()->burst_remaining == 0){
     yield();
   }
 ```
-+
+
 This is the key runtime mechanism behind STCF. Each tick removes one unit of CPU time from the active process. When the remaining burst reaches zero, the process yields so the scheduler can select the next runnable job.
 ### 7) Scheduler waiting-time tracking
-+
+
 In `kernel/proc.c`, after a process runs and yields back to the scheduler, phase1 updates waiting time for other runnable processes:
-+
+
 ```c
 uint selected_time = ticks - selected_start;
 
@@ -184,14 +184,14 @@ for(pi = proc; pi < &proc[NPROC]; pi++) {
   }
 }
 ```
-+
+
 This measures how long the selected process ran and adds that runtime to the waiting totals of other runnable processes.
 ### 8) New system calls: `schedlog` and `setburst`
-+
+
 In `kernel/sysproc.c`, phase1 adds:
-+
+
 #### `schedlog`
-+
+
 ```c
 uint64
 sys_schedlog(void)
